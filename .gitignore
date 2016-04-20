@@ -21,6 +21,7 @@
 .project
 .settings/
 .classpath
+.springBeans
 /ImportedClasses/
 /src/main/groovy/META-INF/
 
