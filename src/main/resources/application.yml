@@ -1,0 +1,2 @@
+#spring.main.sources: my.com.medisys.mllp.route.MLLPRoute
+camel.springboot.main-run-controller: true

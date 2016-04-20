@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+        
+    <!-- 
+    ================================================================================
+    application context >> camel
+    ================================================================================
+    @author     Shahed Hossain<shahed@medisys.com.sa>
+    @vendor     Medical Systems Co. Ltd
+    @web        www.medisys.com.sa
+    @version    2.0.00
+    @since      1.0.00
+    ================================================================================
+    -->
+    
+    <bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+        <property name="propertiesParser" ref="propertiesParser" />
+        <property name="locations">
+        	<value>classpath:META-INF/property/route.properties</value>
+        </property>
+    </bean>
+    
+	<bean id="hl7codec" class="org.apache.camel.component.hl7.HL7MLLPCodec">
+	      <property name="charset" value="iso-8859-1"/>
+	</bean>
+	    
+    <camel:camelContext id="camelContext">
+        <camel:contextScan>
+            <camel:includes>*Route</camel:includes>
+        </camel:contextScan>
+    </camel:camelContext>
+    
+</beans>
